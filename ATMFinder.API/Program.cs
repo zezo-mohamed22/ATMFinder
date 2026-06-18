@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Authentication;
-
-using System.Text;
+using ATMFinder.DAL.Data.DbContexts;
+using Microsoft.EntityFrameworkCore;
 public class Program
 {
     private static void Main(string[] args)
@@ -8,7 +7,8 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllers();
-
+        builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
