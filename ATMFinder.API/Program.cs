@@ -8,7 +8,9 @@ public class Program
 
         builder.Services.AddControllers();
         builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+            .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information)
+            .EnableSensitiveDataLogging());
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 

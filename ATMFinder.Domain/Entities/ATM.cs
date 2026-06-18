@@ -11,7 +11,8 @@
         public Bank Bank { get; set; } = null!;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-
+        public ICollection<ATMReport> ATMReports { get; set; } = default!;
+        public ATMStatusSnapshot ATMStatusSnapshot { get; set; } = default!; 
     }
 
 }

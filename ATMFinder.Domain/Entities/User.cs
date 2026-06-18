@@ -12,7 +12,8 @@ namespace ATMFinder.Domain.Entities
         public int ReputationScore { get; set; } = 100;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        ICollection<ReportVote> ReportVotes { get; set; } = default!; 
+        public ICollection<ReportVote> ReportVotes { get; set; } = default!;
+        public ICollection<ATMReport> ATMReports { get; set; } = default!;
     }
 
 }

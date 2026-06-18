@@ -1,5 +1,6 @@
 ﻿using ATMFinder.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 namespace ATMFinder.DAL.Data.DbContexts
 {
     public class AppDbContext : DbContext
@@ -13,9 +14,11 @@ namespace ATMFinder.DAL.Data.DbContexts
         public DbSet<Bank> Banks { get; set; }
         public DbSet<ATM> Atms { get; set; }
         public DbSet<ReportVote> ReportVotes { get; set; }
+        public DbSet<ATMStatusSnapshot> ATMStatusSnapshots { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }
 
     }
